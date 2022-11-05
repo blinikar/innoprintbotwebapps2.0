@@ -1,0 +1,11 @@
+@import "palette";
+@import "resetMixins";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  @include bodyReset;
+}
