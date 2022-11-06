@@ -25,7 +25,7 @@ export const MainPage: React.FC<MainPageProps> = (props) => {
   useEffect(() => {
     Telegram.WebApp.ready();
     Telegram.WebApp.MainButton.setText('SAVE').show().onClick(function () {
-      submit();
+      // submit();
       Telegram.WebApp.close();
     });
   }, []);
