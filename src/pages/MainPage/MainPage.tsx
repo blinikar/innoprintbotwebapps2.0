@@ -10,7 +10,9 @@ export interface MainPageProps {
 export const MainPage: React.FC<MainPageProps> = (props) => {
   const logic = useMainPageLogic(props);
   const config = useConfig();
-  const { values, getChangeValueHandler, getApplyActionHandler, getError, getValues } = logic.useForm(config);
+  const {
+    values, getChangeValueHandler, getApplyActionHandler, getError, getValues
+  } = logic.useForm(config.parameters);
 
   const submit = () => {
     const xhr = new XMLHttpRequest();
@@ -24,7 +26,7 @@ export const MainPage: React.FC<MainPageProps> = (props) => {
 
   useEffect(() => {
     Telegram.WebApp.ready();
-    Telegram.WebApp.MainButton.setText('SAVE').show().onClick(function () {
+    Telegram.WebApp.MainButton.setText(config.buttonText).show().onClick(function () {
       // submit();
       Telegram.WebApp.close();
     });
