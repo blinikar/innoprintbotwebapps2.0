@@ -1,0 +1,43 @@
+.number-spinner {
+  display: flex;
+  border-radius: 12px;
+
+  .input {
+    -moz-appearance:textfield;
+    padding: 6px;
+    width: 30px;
+    font-size: 16px;
+    text-align: center;
+    color: var(--tg-theme-text-color);
+    border: 0;
+    background: none;
+  }
+
+  .input::-webkit-inner-spin-button,
+  .input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .input:focus-visible {
+    outline: none;
+  }
+
+  .minus,
+  .plus {
+    width: 50px;
+    border: 0;
+    margin: 2px;
+    border-radius: 20px;
+    font-size: 16px;
+    color: var(--tg-theme-text-color);
+    background: none;
+  }
+
+  .minus:hover,
+  .plus:hover {
+    transition-duration: var(--transition);
+    cursor: pointer;
+  }
+}
+

@@ -1,11 +1,28 @@
 @import "palette";
 @import "resetMixins";
 
+:root {
+  --transition: 300ms;
+
+  --tg-theme-text-color: #020202;
+  --tg-theme-hint-color: #888888;
+  --tg-theme-link-color: #0D7BFC;
+  --tg-theme-bg-color: rgb(255, 255, 255);
+  --tg-theme-button-color: #4384fd;
+  --tg-theme-button-text-color: #ffffff;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
+  margin: 0;
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   @include bodyReset;
+  background-color: var(--tg-theme-bg-color);
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
 }

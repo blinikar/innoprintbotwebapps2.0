@@ -1,0 +1,29 @@
+.select {
+  .select-button {
+    font-size: 16px;
+    padding: 0 16px;
+    height: 36px;
+
+    border: none;
+    border-radius: 12px;
+
+    text-align: center;
+    color: var(--tg-theme-text-color);
+
+    transition: var(--transition);
+
+    background: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  .active {
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+  }
+}
