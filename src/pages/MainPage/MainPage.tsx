@@ -16,7 +16,7 @@ export const MainPage: React.FC<MainPageProps> = (props) => {
 
   const submit = () => {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', import.meta.env.VITE_API_BASE_URL + '/events/add', false);
+    xhr.open('POST', import.meta.env.VITE_API_BASE_URL + '/events/add/', true);
 
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.setRequestHeader('Content-Type', 'application/json');
