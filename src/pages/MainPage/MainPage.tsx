@@ -16,18 +16,21 @@ export const MainPage: React.FC<MainPageProps> = (props) => {
 
   const submit = () => {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', import.meta.env.VITE_API_BASE_URL + '/add_event', false);
+    xhr.open('POST', import.meta.env.VITE_API_BASE_URL + '/events/add', false);
 
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.setRequestHeader('Content-Type', 'application/json');
 
-    xhr.send(JSON.stringify(getValues()));
+    xhr.send(JSON.stringify({
+      job_id: config.job_id,
+      values: getValues()
+    }));
   };
 
   useEffect(() => {
     Telegram.WebApp.ready();
     Telegram.WebApp.MainButton.setText(config.buttonText).show().onClick(function () {
-      // submit();
+      submit();
       Telegram.WebApp.close();
     });
   }, []);

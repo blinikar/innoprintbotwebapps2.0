@@ -31,7 +31,7 @@ type FormOptionsType = OptionsType;
 
 const validator = (values: FormOptionsType[]): string[] => {
   const result: string[] = [];
-  values.forEach((e, i) => {
+  values.forEach((e) => {
     let error = '';
     switch (e.type) {
     case 'counter':
@@ -70,8 +70,12 @@ export const useMainPageLogic = (props: MainPageProps) => {
         const index = values.findIndex((e) => e.label === label);
         return (action: 'increment' | 'decrement') => {
           const newValues = [...values];
-          const oldValue = parseInt(newValues[index].value);
+          const oldValueObject = newValues[index];
+          const oldValue = parseInt(oldValueObject.value);
           if (isNaN(oldValue)) return;
+          if (oldValueObject.type === 'counter')
+            if ((oldValueObject.min === oldValue && action === 'decrement')
+              || (oldValueObject.max === oldValue && action === 'increment')) return;
           newValues[index].value = (action === 'increment' ? oldValue + 1 : oldValue - 1).toString();
           setValues(newValues);
         };
