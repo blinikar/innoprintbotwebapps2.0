@@ -22,14 +22,14 @@ export const MainPage: React.FC<MainPageProps> = (props) => {
     xhr.setRequestHeader('Content-Type', 'application/json');
 
     xhr.send(JSON.stringify({
-      job_id: config.job_id,
+      jobID: config.jobID,
       values: getValues()
     }));
   };
 
   useEffect(() => {
     Telegram.WebApp.ready();
-    Telegram.WebApp.MainButton.setText(config.buttonText).show().onClick(function () {
+    Telegram.WebApp.MainButton.setText(config.buttonText).show().onClick(() => {
       submit();
       Telegram.WebApp.close();
     });

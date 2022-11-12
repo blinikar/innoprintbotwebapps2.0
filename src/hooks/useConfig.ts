@@ -30,13 +30,13 @@ const initialValuesArrayMock: OptionsType[] = [
 interface OptionsDTO {
   buttonText: string;
   parameters: OptionsType[];
-  job_id: string;
+  jobID: string;
 }
 
 export const useConfig = () => {
   const queryParameters = new URLSearchParams(window.location.search);
   const data = queryParameters.get('data');
-  let result: OptionsDTO = { buttonText: 'SAVE', parameters: [], job_id: '' };
+  let result: OptionsDTO = { buttonText: 'SAVE', parameters: [], jobID: '' };
   if (data) result = JSON.parse(atob(data)) as OptionsDTO;
   return result;
 };
