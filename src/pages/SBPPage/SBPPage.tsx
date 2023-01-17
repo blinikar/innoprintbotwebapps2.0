@@ -1,5 +1,6 @@
-import { useConfig } from 'hooks/useConfig';
 import React, { FC, useLayoutEffect } from 'react';
+import { useConfig } from 'hooks/useConfig';
+import styles from './SBPPage.module.scss';
 
 interface SBPOptionsDTO {
     link: string;
@@ -8,14 +9,11 @@ interface SBPOptionsDTO {
 export const SBPPage: FC = () => {
     const params = useConfig<SBPOptionsDTO>();
     
-    useLayoutEffect(() => {
-        console.log(params);
-        if (!params.link.startsWith('http')) return;
-        document.location.href = params.link;
-    }, []);
+    // useLayoutEffect(() => {
+    //     console.log(params);
+    //     if (!params.link.startsWith('http')) return;
+    //     document.location.href = params.link;
+    // }, []);
     
-    return <>
-        <p>Redirecting to the payment provider...</p>
-        <p>Переадресация к платежному провайдеру...</p>
-    </>
+    return <iframe className={styles['frame']} src={params.link} frameBorder="no" />;
 }
