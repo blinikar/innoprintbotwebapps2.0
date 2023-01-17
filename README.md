@@ -1,32 +1,21 @@
-# Atomic React Starter
-A simple React project starter optimized to work in WebStorm
+# InnoPrintBotWebApps2.0
 
-## Features:
-- Blazing-fast hot-reload
-- Typescript support
-- Linter specially configured for my code and structure style
-- Testing bootstrapped
-- On-commit linting and testing
-- Router included
+## How To Start:
 
-## Possible problems
-### IDE imports modules relative to project root, not `src` folder
-In WebStorm settings, go to `Editor` -> `Code Style` -> `Typescript` -> `Import`, check `Use paths relative to tsconfig.json`
+This projects supports either docker (Nginx) production building or developer builds
 
-## Technologies list:
-- `Vite`
-- `Vitest`
-- `ESLint`
-- `React Testing Library`
-- `SASS`
-- `React Router`
-- `OpenColor Palette`
+You should edit the `/src/.env` file, regardless of which build method you choose
 
+### To start production with Docker 
 
-## TODO features
-- Zip with WebStorm template settings
-- Mutation testing? (`Stryker`)
-- One-command `Mantine` and `Tabler Icon` installation
-- Reference files with a script to remove them all
-- Add on-commit hooks with `Husky`
-- Add components and pages templating with `plop`
+- Run `docker build -t ipbwebapps .` in project root directory
+- Run `docker run -p 8080:8080 ipbwebapps`
+
+Done!
+
+### To start develop with npm
+
+Make sure that your nodeJS version is 18.3.0
+
+- Run `npm i`
+- Run `npm run start` to start developing server

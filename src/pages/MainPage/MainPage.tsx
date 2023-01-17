@@ -72,8 +72,8 @@ export const MainPage: FC = (props) => {
         }
       })}
 
-    <button onClick={() => {
+    {/* <button onClick={() => {
       submit();
-    }}>TEST</button>
+    }}>TEST</button> */}
   </div>;
 };

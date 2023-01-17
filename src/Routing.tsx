@@ -11,7 +11,7 @@ export const Routing = () => {
         <Route path='*' element={<p>
           You are not supposed to be here.{' '}
           <br />
-          Contact Telegram @blinikar or @KeepError to resolve this error
+          Contact bot support to resolve this error
         </p>} />
       </Routes>
     </BrowserRouter>
