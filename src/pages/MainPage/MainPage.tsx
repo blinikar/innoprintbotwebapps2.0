@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import styles from './MainPage.module.scss';
-import { useMainPageLogic } from './MainPage.logic';
+import { useMainPageLogic, FormOptionsDTO } from './MainPage.logic';
 import { Option } from 'components/Option';
 import { useConfig } from 'hooks/useConfig';
 
-export interface MainPageProps {
-}
-
-export const MainPage: React.FC<MainPageProps> = (props) => {
-  const logic = useMainPageLogic(props);
-  const config = useConfig();
+export const MainPage: FC = (props) => {
+  const logic = useMainPageLogic();
+  const config = useConfig<FormOptionsDTO>();
+  
   const {
     values, getChangeValueHandler, getApplyActionHandler, getError, getValues
   } = logic.useForm(config.parameters);

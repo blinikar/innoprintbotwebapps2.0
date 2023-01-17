@@ -1,4 +1,3 @@
-import { MainPageProps } from './MainPage';
 import { useEffect, useState } from 'react';
 
 interface AbstractOptions {
@@ -29,6 +28,12 @@ export type OptionsType = SelectOptions | CounterOptions | TextOptions;
 
 type FormOptionsType = OptionsType;
 
+export interface FormOptionsDTO {
+  buttonText: string;
+  parameters: OptionsType[];
+  jobID: string;
+}
+
 const validator = (values: FormOptionsType[]): string[] => {
   const result: string[] = [];
   values.forEach((e) => {
@@ -51,7 +56,7 @@ const validator = (values: FormOptionsType[]): string[] => {
   return result;
 };
 
-export const useMainPageLogic = (props: MainPageProps) => {
+export const useMainPageLogic = () => {
   return {
     useForm: (initialValues: OptionsType[]) => {
       const [values, setValues] = useState<FormOptionsType[]>(initialValues);
