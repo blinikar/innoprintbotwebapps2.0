@@ -11,7 +11,7 @@ export const SBPPage: FC = () => {
     useLayoutEffect(() => {
         console.log(params);
         if (!params.link.startsWith('http')) return;
-        window.location.href = params.link;
+        document.location.href = params.link;
     }, []);
     
     return <>
