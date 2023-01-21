@@ -34,7 +34,6 @@ export const useConfig = <T>() => {
   const data = queryParameters.get('data');
 
   if (data) {
-    console.log(atob(data));
     result = JSON.parse(atob(data)) as T;
   }
   
