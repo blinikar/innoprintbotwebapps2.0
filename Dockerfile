@@ -1,6 +1,9 @@
 FROM node:18.3.0 AS builder
 WORKDIR /home/node/build
 
+ARG VITE_API_BASE_URL=production
+ENV VITE_API_BASE_URL="${VITE_API_BASE_URL}"
+
 COPY . .
 RUN npm ci
 RUN npm run build

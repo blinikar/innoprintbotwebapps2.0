@@ -115,7 +115,7 @@ export const useMainPageLogic = () => {
         setErrors(validator(values));
       }, [values]);
 
-      return { values, getChangeValueHandler, getApplyActionHandler, getError, getValues };
+      return { values, getChangeValueHandler, getApplyActionHandler, getError, getValues, noErrors };
     }
   };
 };

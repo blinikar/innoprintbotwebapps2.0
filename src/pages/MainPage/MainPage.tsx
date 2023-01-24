@@ -4,15 +4,17 @@ import { useMainPageLogic, FormOptionsDTO } from './MainPage.logic';
 import { Option } from 'components/Option';
 import { useConfig } from 'hooks/useConfig';
 
-export const MainPage: FC = (props) => {
+export const MainPage: FC = () => {
   const logic = useMainPageLogic();
   const config = useConfig<FormOptionsDTO>();
   
   const {
-    values, getChangeValueHandler, getApplyActionHandler, getError, getValues
+    values, getChangeValueHandler, getApplyActionHandler, getError, getValues, noErrors
   } = logic.useForm(config.parameters);
 
   const submit = () => {
+    if (!noErrors()) return;
+
     const xhr = new XMLHttpRequest();
     xhr.open('POST', import.meta.env.VITE_API_BASE_URL + '/events/add/', true);
 
@@ -72,8 +74,8 @@ export const MainPage: FC = (props) => {
         }
       })}
 
-    {/* <button onClick={() => {
-      submit();
-    }}>TEST</button> */}
+    {/*<button onClick={() => {*/}
+    {/*  submit();*/}
+    {/*}}>TEST</button>*/}
   </div>;
 };

@@ -9,7 +9,7 @@ You should edit the `/src/.env` file, regardless of which build method you choos
 ### To start production with Docker 
 
 - Run `docker build -t ipbwebapps .` in project root directory
-- Run `docker run -p 8080:8080 ipbwebapps`
+- Run `docker run -p 80:80 ipbwebapps`
 
 Done!
 
