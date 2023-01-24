@@ -32,7 +32,7 @@ export const MainPage: FC = () => {
       submit();
       Telegram.WebApp.close();
     });
-  }, []);
+  }, [noErrors]);
 
   return <div className={styles['content']}>
     {values.length > 0 &&

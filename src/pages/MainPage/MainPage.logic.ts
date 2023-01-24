@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface AbstractOptions {
   label: string;
@@ -91,11 +91,11 @@ export const useMainPageLogic = () => {
         return errors[index];
       };
 
-      const noErrors = () => {
+      const noErrors = useCallback(() => {
         for (const e of errors)
           if (e !== '') return false;
         return true;
-      };
+      }, [errors]);
 
       const getValues = (): (string | number)[] => {
         if (!noErrors()) return [];
