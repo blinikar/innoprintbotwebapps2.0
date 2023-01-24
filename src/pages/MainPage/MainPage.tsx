@@ -13,8 +13,6 @@ export const MainPage: FC = () => {
   } = logic.useForm(config.parameters);
 
   const submit = () => {
-    if (!noErrors()) return;
-
     const xhr = new XMLHttpRequest();
     xhr.open('POST', import.meta.env.VITE_API_BASE_URL + '/events/add/', true);
 
@@ -30,6 +28,7 @@ export const MainPage: FC = () => {
   useEffect(() => {
     Telegram.WebApp.ready();
     Telegram.WebApp.MainButton.setText(config.buttonText).show().onClick(() => {
+      if (!noErrors()) return;
       submit();
       Telegram.WebApp.close();
     });
