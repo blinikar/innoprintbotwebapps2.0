@@ -8,8 +8,8 @@ You should edit the `/src/.env` file, regardless of which build method you choos
 
 ### To start production with Docker 
 
-- Run `docker build -t ipbwebapps .` in project root directory
-- Run `docker run -p 80:80 ipbwebapps`
+- Go to `docker-compose.yml` file and change VITE_API_BASE_URL variable value
+- Run `docker compose up --build` in project root directory
 
 Done!
 
