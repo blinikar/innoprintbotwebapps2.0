@@ -14,7 +14,7 @@ export const MainPage: FC = () => {
 
   const submit = () => {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', import.meta.env.VITE_API_BASE_URL + '/events/add/', true);
+    xhr.open('POST', import.meta.env.VITE_API_BASE_URL + '/events/', true);
 
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -73,8 +73,10 @@ export const MainPage: FC = () => {
         }
       })}
 
-    {/*<button onClick={() => {*/}
-    {/*  submit();*/}
-    {/*}}>TEST</button>*/}
+    <button onClick={() => {
+      if (!noErrors()) return;
+      submit();
+      console.log('hello');
+    }}>TEST</button>
   </div>;
 };
