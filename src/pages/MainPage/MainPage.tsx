@@ -1,4 +1,4 @@
-import React, { FC, useLayoutEffect } from 'react';
+import React, { FC, useLayoutEffect, useRef } from 'react';
 import styles from './MainPage.module.scss';
 import { useMainPageLogic, FormOptionsDTO } from './MainPage.logic';
 import { Option } from 'components/Option';
@@ -25,8 +25,10 @@ export const MainPage: FC = () => {
     }));
   };
 
+  const button = useRef<any>();
   useLayoutEffect(() => {
     Telegram.WebApp.ready();
+    button.current = Telegram.WebApp.MainButton.setText(config.buttonText).show();
   }, []);
 
   useLayoutEffect(() => {
@@ -36,12 +38,14 @@ export const MainPage: FC = () => {
       Telegram.WebApp.close();
     };
 
-    const button = Telegram.WebApp.MainButton.setText(config.buttonText).show().onClick(onButtonClick);
+    if (button.current) {
+      button.current.onClick(onButtonClick);
 
-    if (noErrors()) button.enable();
-    else button.disable();
+      if (noErrors()) button.current.enable();
+      else button.current.disable();
 
-    return () => button.offClick(onButtonClick);
+      return () => button.current.offClick(onButtonClick);
+    }
   }, [noErrors]);
 
   return <div className={styles['content']}>
