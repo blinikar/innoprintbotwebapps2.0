@@ -12,12 +12,17 @@ export const MainPage: FC = () => {
     values, getChangeValueHandler, getApplyActionHandler, getError, getValues, noErrors
   } = logic.useForm(config.parameters);
 
-  const submit = () => {
+  const submitAndClose = () => {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', import.meta.env.VITE_API_BASE_URL + '/events/', true);
 
     xhr.setRequestHeader('Accept', 'application/json');
     xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = () => {
+      if(xhr.readyState == 4 && xhr.status == 200) {
+        Telegram.WebApp.close();
+      }
+    };
 
     xhr.send(JSON.stringify({
       jobID: config.jobID,
@@ -34,8 +39,7 @@ export const MainPage: FC = () => {
   useLayoutEffect(() => {
     const onButtonClick = () => {
       if (!noErrors()) return;
-      submit();
-      Telegram.WebApp.close();
+      submitAndClose();
     };
 
     if (button.current) {
